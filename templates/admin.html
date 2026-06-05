@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гости — Артём & Яна</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <style>
+    body { background: #fdf6ef; font-family: 'Raleway', sans-serif; padding: 2rem; }
+    .admin-header { text-align: center; margin-bottom: 2rem; }
+    .admin-header h1 { font-size: 1.8rem; color: #7a5c4e; }
+    .stats { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
+    .stat-card { background: #fff; border-radius: 12px; padding: 1.2rem 2rem; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .stat-card__num { font-size: 2.5rem; font-weight: 600; color: #b07b6e; }
+    .stat-card__label { font-size: 0.85rem; color: #999; margin-top: 0.3rem; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    th { background: #f4c2c2; color: #5c3d35; padding: 0.9rem 1rem; text-align: left; font-weight: 600; font-size: 0.85rem; }
+    td { padding: 0.8rem 1rem; border-bottom: 1px solid #f0ebe6; font-size: 0.9rem; color: #555; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fdf0ee; }
+    .badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+    .badge--yes { background: #d4edda; color: #2d6a4f; }
+    .badge--no { background: #f8d7da; color: #721c24; }
+    .empty { text-align: center; padding: 3rem; color: #aaa; }
+  </style>
+</head>
+<body>
+  <div class="admin-header">
+    <h1>Список гостей — Артём &amp; Яна 💍</h1>
+    <p style="color:#999; font-size:0.9rem;">19 сентября 2026</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-card__num">{{ yes_count }}</div>
+      <div class="stat-card__label">придут</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__num">{{ no_count }}</div>
+      <div class="stat-card__label">не придут</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__num">{{ guests|length }}</div>
+      <div class="stat-card__label">всего ответов</div>
+    </div>
+  </div>
+
+  {% if guests %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Имя</th>
+        <th>Ответ</th>
+        <th>Пожелания по еде</th>
+        <th>Комментарий</th>
+        <th>Дата ответа</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for g in guests %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><strong>{{ g.name }}</strong></td>
+        <td>
+          {% if g.attending == "yes" %}
+            <span class="badge badge--yes">Придёт ✓</span>
+          {% else %}
+            <span class="badge badge--no">Не придёт</span>
+          {% endif %}
+        </td>
+        <td>{{ g.food_note or "—" }}</td>
+        <td>{{ g.comment or "—" }}</td>
+        <td style="white-space: nowrap; font-size: 0.8rem; color: #aaa;">
+          {{ g.created_at.strftime("%d.%m.%Y %H:%M") if g.created_at else "—" }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p class="empty">Пока нет ни одного ответа.</p>
+  {% endif %}
+</body>
+</html>

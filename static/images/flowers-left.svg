@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 700" fill="none">
+  <!-- Stems -->
+  <path d="M80 700 Q70 550 90 400 Q110 250 80 100" stroke="#B2C9AD" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M120 700 Q130 580 110 460 Q90 340 130 200" stroke="#B2C9AD" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M50 700 Q40 600 60 480 Q80 360 50 240" stroke="#B2C9AD" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Leaves -->
+  <ellipse cx="100" cy="350" rx="35" ry="15" fill="#B2C9AD" opacity="0.6" transform="rotate(-30 100 350)"/>
+  <ellipse cx="70" cy="500" rx="30" ry="12" fill="#B2C9AD" opacity="0.5" transform="rotate(20 70 500)"/>
+  <ellipse cx="130" cy="300" rx="28" ry="11" fill="#B2C9AD" opacity="0.55" transform="rotate(-45 130 300)"/>
+
+  <!-- Rose 1 -->
+  <g transform="translate(80 110)">
+    <circle cx="0" cy="0" r="22" fill="#F4C2C2" opacity="0.9"/>
+    <circle cx="0" cy="0" r="14" fill="#f0a0a0" opacity="0.8"/>
+    <circle cx="0" cy="0" r="7" fill="#e88888" opacity="0.9"/>
+    <ellipse cx="-18" cy="-8" rx="12" ry="9" fill="#F4C2C2" opacity="0.75" transform="rotate(-20 -18 -8)"/>
+    <ellipse cx="18" cy="-8" rx="12" ry="9" fill="#F4C2C2" opacity="0.75" transform="rotate(20 18 -8)"/>
+    <ellipse cx="0" cy="-20" rx="11" ry="8" fill="#F4C2C2" opacity="0.75"/>
+    <ellipse cx="-14" cy="14" rx="11" ry="8" fill="#f0a0a0" opacity="0.7" transform="rotate(30 -14 14)"/>
+    <ellipse cx="14" cy="14" rx="11" ry="8" fill="#f0a0a0" opacity="0.7" transform="rotate(-30 14 14)"/>
+  </g>
+
+  <!-- Rose 2 (smaller) -->
+  <g transform="translate(130 220)">
+    <circle cx="0" cy="0" r="16" fill="#fce4ec" opacity="0.85"/>
+    <circle cx="0" cy="0" r="9" fill="#F4C2C2" opacity="0.9"/>
+    <circle cx="0" cy="0" r="5" fill="#e88888" opacity="0.85"/>
+    <ellipse cx="-13" cy="-6" rx="9" ry="7" fill="#fce4ec" opacity="0.7" transform="rotate(-20 -13 -6)"/>
+    <ellipse cx="13" cy="-6" rx="9" ry="7" fill="#fce4ec" opacity="0.7" transform="rotate(20 13 -6)"/>
+    <ellipse cx="0" cy="-15" rx="8" ry="6" fill="#fce4ec" opacity="0.7"/>
+  </g>
+
+  <!-- Tiny bud -->
+  <g transform="translate(55 420)">
+    <ellipse cx="0" cy="0" rx="8" ry="12" fill="#F4C2C2" opacity="0.8"/>
+    <ellipse cx="-6" cy="4" rx="5" ry="8" fill="#f0a0a0" opacity="0.7" transform="rotate(-15 -6 4)"/>
+    <ellipse cx="6" cy="4" rx="5" ry="8" fill="#f0a0a0" opacity="0.7" transform="rotate(15 6 4)"/>
+  </g>
+
+  <!-- Small flower -->
+  <g transform="translate(95 560)">
+    <circle cx="0" cy="-12" r="7" fill="#F4C2C2" opacity="0.7"/>
+    <circle cx="11" cy="-4" r="7" fill="#F4C2C2" opacity="0.7"/>
+    <circle cx="7" cy="10" r="7" fill="#F4C2C2" opacity="0.7"/>
+    <circle cx="-7" cy="10" r="7" fill="#F4C2C2" opacity="0.7"/>
+    <circle cx="-11" cy="-4" r="7" fill="#F4C2C2" opacity="0.7"/>
+    <circle cx="0" cy="0" r="5" fill="#f4e4a0" opacity="0.9"/>
+  </g>
+</svg>

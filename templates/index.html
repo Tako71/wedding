@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Артём & Яна — 19.09.2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ПРЕЛОАДЕР -->
+  <div id="preloader">
+    <div class="preloader__inner">
+      <div class="preloader__rings">
+        <div class="preloader__ring preloader__ring--left"></div>
+        <div class="preloader__ring preloader__ring--right"></div>
+      </div>
+      <p class="preloader__names">Артём <span>&amp;</span> Яна</p>
+      <p class="preloader__date">19 · 09 · 2026</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero__video" autoplay muted loop playsinline>
+      <source src="/static/images/rings.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__flowers hero__flowers--left"></div>
+    <div class="hero__flowers hero__flowers--right"></div>
+    <div class="hero__content">
+      <p class="hero__pre">Вы приглашены на свадьбу</p>
+      <h1 class="hero__names">Артём <span class="hero__ampersand">&amp;</span> Яна</h1>
+      <p class="hero__date">19 сентября 2026</p>
+      <div class="hero__divider">❧</div>
+      <p class="hero__subtitle">Мы приглашаем вас разделить с нами этот особенный день</p>
+      <a href="#rsvp" class="btn btn--primary">Подтвердить участие</a>
+    </div>
+  </section>
+
+  <!-- ТАЙМЕР -->
+  <section class="countdown reveal">
+    <p class="countdown__label">До нашей свадьбы осталось</p>
+    <div class="countdown__grid">
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-days">--</span>
+        <span class="countdown__unit">дней</span>
+      </div>
+      <div class="countdown__sep">:</div>
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-hours">--</span>
+        <span class="countdown__unit">часов</span>
+      </div>
+      <div class="countdown__sep">:</div>
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-minutes">--</span>
+        <span class="countdown__unit">минут</span>
+      </div>
+      <div class="countdown__sep">:</div>
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-seconds">--</span>
+        <span class="countdown__unit">секунд</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="floral-divider reveal">✿ ❀ ✿</div>
+
+  <!-- ИСТОРИЯ -->
+  <section class="story reveal">
+    <h2 class="section-title">Наша история</h2>
+    <p class="story__text">
+      Каждая история любви особенна, но наша — самая любимая для нас.
+      Мы встретились, влюбились и решили идти по жизни вместе.
+      И теперь хотим, чтобы вы — самые близкие нам люди — разделили с нами
+      этот счастливый день.
+    </p>
+    <div class="story__hearts">💕</div>
+  </section>
+
+  <div class="floral-divider reveal">✿ ❀ ✿</div>
+
+  <!-- ПРОГРАММА -->
+  <section class="schedule reveal">
+    <h2 class="section-title">Программа дня</h2>
+    <div class="schedule__list">
+      <div class="schedule__item">
+        <div class="schedule__icon">🕐</div>
+        <div class="schedule__info">
+          <span class="schedule__time">11:30</span>
+          <span class="schedule__event">Сбор гостей у ЗАГСа</span>
+          <span class="schedule__place">Большая Монетная ул., 17-19, Санкт-Петербург</span>
+        </div>
+      </div>
+      <div class="schedule__connector"></div>
+      <div class="schedule__item">
+        <div class="schedule__icon">💍</div>
+        <div class="schedule__info">
+          <span class="schedule__time">12:00</span>
+          <span class="schedule__event">Церемония бракосочетания</span>
+          <span class="schedule__place">ЗАГС Петроградского района</span>
+        </div>
+      </div>
+      <div class="schedule__connector"></div>
+      <div class="schedule__item">
+        <div class="schedule__icon">📸</div>
+        <div class="schedule__info">
+          <span class="schedule__time">12:30 – 13:00</span>
+          <span class="schedule__event">Фотосессия</span>
+          <span class="schedule__place">У ЗАГСа и в окрестностях</span>
+        </div>
+      </div>
+    </div>
+    <div class="schedule__calendar">
+      <p class="schedule__calendar-label">Сохраните дату в календаре</p>
+      <div class="schedule__calendar-btns">
+        <a class="btn btn--secondary btn--sm"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%A1%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D0%B0+%D0%90%D1%80%D1%82%D1%91%D0%BC%D0%B0+%26+%D0%AF%D0%BD%D1%8B&dates=20260919T113000/20260919T150000&details=%D0%A1%D0%B1%D0%BE%D1%80+%D0%B3%D0%BE%D1%81%D1%82%D0%B5%D0%B9+%D0%B2+11%3A30%2C+%D1%86%D0%B5%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D0%B8%D1%8F+%D0%B2+12%3A00&location=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F+%D0%9C%D0%BE%D0%BD%D0%B5%D1%82%D0%BD%D0%B0%D1%8F+%D1%83%D0%BB.%2C+17-19%2C+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+           target="_blank" rel="noopener">
+          Google Calendar
+        </a>
+        <a class="btn btn--secondary btn--sm" href="/calendar.ics">
+          Apple / Outlook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="floral-divider reveal">✿ ❀ ✿</div>
+
+  <!-- МЕСТО -->
+  <section class="location reveal">
+    <h2 class="section-title">Место проведения</h2>
+    <p class="location__name">ЗАГС Петроградского района</p>
+    <p class="location__address">Большая Монетная ул., 17-19, Санкт-Петербург</p>
+    <div class="location__photo">
+      <img src="/static/images/zags.jpg" alt="ЗАГС Петроградского района, Санкт-Петербург" loading="lazy" />
+    </div>
+    <a
+      href="https://yandex.ru/maps/?text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F+%D0%9C%D0%BE%D0%BD%D0%B5%D1%82%D0%BD%D0%B0%D1%8F+17-19+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+      target="_blank" rel="noopener" class="btn btn--secondary">
+      Построить маршрут
+    </a>
+  </section>
+
+  <div class="floral-divider reveal">✿ ❀ ✿</div>
+
+  <!-- RSVP -->
+  <section class="rsvp reveal" id="rsvp">
+    <h2 class="section-title">Подтвердите участие</h2>
+    <p class="rsvp__subtitle">Пожалуйста, сообщите нам о своём решении до 1 сентября 2026</p>
+    <form class="rsvp__form" method="post" action="/rsvp">
+      <div class="form-group">
+        <label for="name">Ваше имя *</label>
+        <input type="text" id="name" name="name" placeholder="Иван Иванов" required />
+      </div>
+      <div class="form-group">
+        <label>Ваш ответ *</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="attending" value="yes" required />
+            <span>С удовольствием приду 💃</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attending" value="no" />
+            <span>К сожалению, не смогу</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comment">Пожелания молодожёнам</label>
+        <textarea id="comment" name="comment" rows="3" placeholder="Ваши слова для нас бесценны ❤️"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Отправить ответ</button>
+    </form>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section class="contacts reveal">
+    <h2 class="section-title">Остались вопросы?</h2>
+    <p class="contacts__text">Если у вас остались вопросы — мы рады на них ответить</p>
+    <div class="contacts__list">
+      <a class="contacts__item" href="tel:+79217689288">
+        <span class="contacts__icon">📞</span>
+        <span>+7 (921) 768-92-88</span>
+      </a>
+      <a class="contacts__item" href="https://t.me/yana_talay" target="_blank" rel="noopener">
+        <span class="contacts__icon">✈️</span>
+        <span>@yana_talay</span>
+      </a>
+    </div>
+    <p class="contacts__name">Яна</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>С любовью, Артём &amp; Яна 💍</p>
+    <p class="footer__date">19 · 09 · 2026</p>
+  </footer>
+
+  <script>
+    const WEDDING_DATE = "{{ wedding_date }}";
+  </script>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

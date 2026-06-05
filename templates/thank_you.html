@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Спасибо! — Артём & Яна</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <section class="thank-you">
+    <div class="thank-you__card">
+      {% if attending == "yes" %}
+        <div class="thank-you__icon">🎉</div>
+        <h1 class="thank-you__title">Ура! Ждём вас!</h1>
+        <p class="thank-you__text">
+          Мы очень рады, что вы будете с нами в этот особенный день.<br />
+          Не забудьте: <strong>19 сентября 2026</strong> в <strong>11:30</strong><br />
+          у ЗАГСа Петроградского района.
+        </p>
+      {% else %}
+        <div class="thank-you__icon">🥺</div>
+        <h1 class="thank-you__title">Жаль, что вас не будет...</h1>
+        <p class="thank-you__text">
+          Спасибо, что сообщили нам. Мы будем думать о вас в этот день<br />
+          и обязательно отпразднуем вместе при первой возможности!
+        </p>
+      {% endif %}
+      <a href="/" class="btn btn--secondary" style="margin-top: 2rem;">На главную</a>
+    </div>
+  </section>
+
+  {% if attending == "yes" %}
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script>
+    (function () {
+      const colors = ["#F4C2C2", "#B2C9AD", "#f4e4a0", "#ffffff", "#f0a0a0"];
+
+      function burst() {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.55 },
+          colors: colors,
+        });
+      }
+
+      // Первый залп сразу
+      burst();
+
+      // Потом ещё два с задержкой
+      setTimeout(burst, 500);
+      setTimeout(function () {
+        confetti({
+          particleCount: 120,
+          spread: 120,
+          origin: { y: 0.5 },
+          colors: colors,
+          startVelocity: 35,
+        });
+      }, 900);
+    })();
+  </script>
+  {% endif %}
+</body>
+</html>
