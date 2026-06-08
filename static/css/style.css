@@ -705,7 +705,9 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
   font-size: 1.1rem;
 }
 
-.footer__quote {
+.footer__quote,
+.footer__quote:visited,
+.footer__quote:active {
   display: block;
   font-size: 0.8rem;
   font-family: 'Raleway', sans-serif;
@@ -718,7 +720,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
   text-decoration: none;
   transition: opacity 0.2s;
 }
-.footer__quote:hover { opacity: 0.9; text-decoration: underline; }
+.footer__quote:hover { opacity: 0.9; color: #f5ddd5; text-decoration: underline; }
 
 .footer__date {
   font-size: 0.85rem;
