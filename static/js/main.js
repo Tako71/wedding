@@ -78,7 +78,7 @@
   function buildContent(item, isActive) {
     if (item.type === "video") {
       const vid = document.createElement("video");
-      vid.muted = !isActive;          // активный — со звуком
+      vid.muted = true;
       vid.playsinline = true;
       vid.preload = "metadata";
       vid.style.width = "100%";
