@@ -1,0 +1,44 @@
+name: Deploy to VPS  # Название — отображается в GitHub Actions вкладке
+
+# Триггер: запускать при push в ветку main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # GitHub поднимает чистую Ubuntu виртуалку
+
+    steps:
+      # Шаг 1: Показываем какой коммит деплоим
+      - name: Show deploy info
+        run: echo "Deploying commit ${{ github.sha }} by ${{ github.actor }}"
+
+      # Шаг 2: Подключаемся к серверу и деплоим
+      # appleboy/ssh-action — готовый Action для SSH подключения
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}          # 194.154.25.127 из Secrets
+          username: ${{ secrets.SSH_USER }}       # root из Secrets
+          key: ${{ secrets.SSH_PRIVATE_KEY }}     # приватный ключ из Secrets
+          script: |
+            cd /opt/wedding
+
+            # Сохраняем локальные изменения (nginx.conf с доменом)
+            git stash
+
+            # Тянем новый код с GitHub
+            git pull origin main
+
+            # Возвращаем домен в nginx.conf (он каждый раз слетает после pull)
+            sed -i 's/YOUR_DOMAIN/piletskigroup.ru/g' nginx.conf
+
+            # Пересобираем и перезапускаем только app контейнер
+            docker compose up -d --build app
+
+            # Перезапускаем nginx чтобы подхватил новый конфиг
+            docker compose restart nginx
+
+            echo "Deploy complete!"
