@@ -1,44 +1,59 @@
-name: Deploy to VPS  # Название — отображается в GitHub Actions вкладке
+name: CI/CD Pipeline
 
-# Триггер: запускать при push в ветку main
 on:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  # GitHub поднимает чистую Ubuntu виртуалку
+  # ── Шаг 1: Запускаем тесты ────────────────────────────────────────────────
+  # Если тесты упали — деплой не запускается
+  test:
+    runs-on: ubuntu-latest
 
     steps:
-      # Шаг 1: Показываем какой коммит деплоим
-      - name: Show deploy info
-        run: echo "Deploying commit ${{ github.sha }} by ${{ github.actor }}"
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      # Шаг 2: Подключаемся к серверу и деплоим
-      # appleboy/ssh-action — готовый Action для SSH подключения
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create test .env
+        run: |
+          cat > .env << 'EOF'
+          TELEGRAM_BOT_TOKEN=fake_token
+          TELEGRAM_CHAT_ID=123456
+          WEDDING_DATE=2026-09-19T12:00:00
+          SECRET_ADMIN_PASSWORD=changeme
+          DATABASE_URL=sqlite:///./data/wedding.db
+          EOF
+          mkdir -p data
+
+      - name: Run tests
+        run: pytest tests/ -v
+
+  # ── Шаг 2: Деплой на сервер (только если тесты прошли) ────────────────────
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test  # ← ждёт успешного завершения job "test"
+
+    steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SSH_HOST }}          # 194.154.25.127 из Secrets
-          username: ${{ secrets.SSH_USER }}       # root из Secrets
-          key: ${{ secrets.SSH_PRIVATE_KEY }}     # приватный ключ из Secrets
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /opt/wedding
-
-            # Сохраняем локальные изменения (nginx.conf с доменом)
             git stash
-
-            # Тянем новый код с GitHub
             git pull origin main
-
-            # Возвращаем домен в nginx.conf (он каждый раз слетает после pull)
             sed -i 's/YOUR_DOMAIN/piletskigroup.ru/g' nginx.conf
-
-            # Пересобираем и перезапускаем только app контейнер
             docker compose up -d --build app
-
-            # Перезапускаем nginx чтобы подхватил новый конфиг
             docker compose restart nginx
-
             echo "Deploy complete!"
